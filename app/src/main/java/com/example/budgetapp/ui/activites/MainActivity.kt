@@ -2,6 +2,7 @@ package com.example.budgetapp.ui.activites
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -18,15 +19,17 @@ class MainActivity : AppCompatActivity() {
 
     private val navHostFragment: NavHostFragment by lazy { getNavHost() as NavHostFragment }
     protected val navController: NavController by lazy { navHostFragment.navController }
+    
     fun getNavHost(): Fragment = drawerNavHost
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setSupportActionBar(toolbar)
         setupBottomNavigation()
         setupActionBar()
+        setupDestinationListener()
     }
 
     private fun setupBottomNavigation() {
@@ -39,6 +42,17 @@ class MainActivity : AppCompatActivity() {
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
     }
 
+    private fun setupDestinationListener() {
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if (destination.id == R.id.profileFragment ||
+                destination.id == R.id.calendarFragment ||
+                destination.id == R.id.graphFragment ||
+                destination.id == R.id.transactionsFragment
+            ) {
+                supportActionBar?.setDisplayHomeAsUpEnabled(false)
+            }
+        }
+    }
 
 
     override fun onSupportNavigateUp(): Boolean {
