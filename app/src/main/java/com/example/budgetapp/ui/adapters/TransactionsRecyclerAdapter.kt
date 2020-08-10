@@ -9,7 +9,7 @@ import com.example.budgetapp.R
 import com.example.budgetapp.common.base.AbstractViewHolder
 import com.example.budgetapp.common.base.BaseAdapter
 import com.example.budgetapp.common.base.ItemClickListener
-import com.example.budgetapp.data.database.DBTransaction
+import com.example.budgetapp.data.models.persistance.DBTransaction
 import com.example.budgetapp.databinding.LayoutTransactionsListItemBinding
 
 class TransactionsRecyclerAdapter(itemClickListener: ((DBTransaction, Int) -> Unit)? = null) :

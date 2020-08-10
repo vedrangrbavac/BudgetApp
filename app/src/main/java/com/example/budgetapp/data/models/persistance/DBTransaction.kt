@@ -1,4 +1,4 @@
-package com.example.budgetapp.data.database
+package com.example.budgetapp.data.models.persistance
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
