@@ -7,9 +7,17 @@ import java.time.LocalDateTime
 
 @Entity
 data class DBTransaction(
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     val id: Int,
-    var title: String,
-    var date: LocalDateTime,
+    val title: String,
+    val date: LocalDateTime,
+    val category: String,
     val totalPrice: Double
-)
+) {
+    constructor(
+        title: String,
+        date: LocalDateTime,
+        category: String,
+        totalPrice: Double
+    ) : this(0, title, date, category, totalPrice)
+}

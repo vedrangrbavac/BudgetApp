@@ -11,4 +11,7 @@ interface TransactionsDao: BaseDao<DBTransaction> {
 
     @Query("Select * from DBTransaction")
     fun getTransactionsLiveData() : LiveData<List<DBTransaction>>
+
+    @Query("Select * from DBTransaction")
+    fun getTransactionsAsync() : List<DBTransaction>
 }

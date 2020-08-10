@@ -38,6 +38,8 @@ class TransactionsViewHolder(view: View) : AbstractViewHolder<DBTransaction>(vie
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun bind(model: DBTransaction, position: Int, listener: ItemClickListener<DBTransaction>) {
+        binding.transaction = model
+        binding.executePendingBindings()
 
     }
 

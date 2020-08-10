@@ -9,4 +9,12 @@ class TransactionsStorage(private val dao: TransactionsDao) {
     fun getTransactionsLiveData() : LiveData<List<DBTransaction>>{
         return dao.getTransactionsLiveData()
     }
+
+    fun getTransactionsAsync(): List<DBTransaction>{
+        return dao.getTransactionsAsync()
+    }
+
+    suspend fun save(model: DBTransaction) {
+        dao.insertModel(model)
+    }
 }
