@@ -9,7 +9,11 @@
         android:id="@+id/transactionsFragment"
         android:name="com.example.budgetapp.ui.fragments.TransactionsFragment"
         android:label="fragment_transactions"
-        tools:layout="@layout/fragment_transactions" />
+        tools:layout="@layout/fragment_transactions" >
+        <action
+            android:id="@+id/action_transactionsFragment_to_addTransactionFragment"
+            app:destination="@id/addTransactionFragment" />
+    </fragment>
     <fragment
         android:id="@+id/calendarFragment"
         android:name="com.example.budgetapp.ui.fragments.CalendarFragment"
@@ -25,4 +29,9 @@
         android:name="com.example.budgetapp.ui.fragments.GraphFragment"
         android:label="fragment_graph"
         tools:layout="@layout/fragment_graph" />
+    <fragment
+        android:id="@+id/addTransactionFragment"
+        android:name="com.example.budgetapp.ui.fragments.AddTransactionFragment"
+        android:label="fragment_add_transaction"
+        tools:layout="@layout/fragment_add_transaction" />
 </navigation>

@@ -24,7 +24,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_gravity="end|bottom"
             android:src="@drawable/ic_add_24"
-            android:layout_margin="16dp" />
+            android:layout_margin="16dp"
+            android:onClick="@{(v) -> viewModel.onClick(v)}"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvListOfTransactions"

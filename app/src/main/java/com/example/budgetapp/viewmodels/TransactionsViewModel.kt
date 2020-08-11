@@ -1,8 +1,11 @@
 package com.example.budgetapp.viewmodels
 
 import android.util.Log
+import android.view.View
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
+import androidx.navigation.findNavController
+import com.example.budgetapp.R
 import com.example.budgetapp.common.base.BaseViewModel
 import com.example.budgetapp.data.models.persistance.DBTransaction
 import com.example.budgetapp.repositories.TransactionsRepository
@@ -33,6 +36,15 @@ class TransactionsViewModel(private val repository: TransactionsRepository) : Ba
     fun saveTransaction(dbTransaction: DBTransaction) {
         suspendCall {
             repository.saveTransaction(dbTransaction)
+        }
+    }
+
+    fun onClick(view: View) {
+        when (view.id) {
+            R.id.fabAddTransaction -> {
+                view.findNavController().navigate(R.id.action_transactionsFragment_to_addTransactionFragment)
+            }
+
         }
     }
 }
