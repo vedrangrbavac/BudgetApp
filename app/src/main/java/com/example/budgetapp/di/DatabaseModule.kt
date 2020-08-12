@@ -19,9 +19,9 @@ val databaseModule = module {
         Room.databaseBuilder(androidApplication(), AppDb::class.java, "transaction_database")
             .allowMainThreadQueries().fallbackToDestructiveMigration()
             .build()
-        single { get<AppDb>().transactionsDao }
     }
 
+    single { get<AppDb>().transactionsDao }
     /**
      * Adding data before on installation of app, can be useful when we want to test something, but
      * dont have any data to test.

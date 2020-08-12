@@ -13,7 +13,6 @@ import com.example.budgetapp.R
 import com.example.budgetapp.common.base.BaseViewModel
 import com.example.budgetapp.data.models.persistance.DBTransaction
 import com.example.budgetapp.repositories.TransactionsRepository
-import kotlinx.android.synthetic.main.fragment_add_transaction.view.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
@@ -79,8 +78,16 @@ class TransactionsViewModel(private val repository: TransactionsRepository) : Ba
                 val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.GERMAN)
                 val ld = LocalDate.parse(dateLiveData.value.toString(), formatter)
                 Log.d("Date", ld.toString())
-                //                Log.d("Data", contentsLiveData.value.toString() + LocalDate.now() + "/n" + selectedCategory.toString() + "/n" + amountLiveData.value!!.toDouble())
-                saveTransaction(DBTransaction(contentsLiveData.value.toString(), ld, selectedCategory.value.toString(), amountLiveData.value!!.toDouble()))
+                saveTransaction(
+                    DBTransaction(
+                        contentsLiveData.value.toString(),
+                        ld,
+                        selectedCategory.value.toString(),
+                        amountLiveData.value!!.toDouble()
+                    )
+                )
+                view.findNavController()
+                    .navigate(R.id.action_addTransactionFragment_to_transactionsFragment)
             }
 
         }

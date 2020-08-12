@@ -33,5 +33,9 @@
         android:id="@+id/addTransactionFragment"
         android:name="com.example.budgetapp.ui.fragments.AddTransactionFragment"
         android:label="fragment_add_transaction"
-        tools:layout="@layout/fragment_add_transaction" />
+        tools:layout="@layout/fragment_add_transaction" >
+        <action
+            android:id="@+id/action_addTransactionFragment_to_transactionsFragment"
+            app:destination="@id/transactionsFragment" />
+    </fragment>
 </navigation>
