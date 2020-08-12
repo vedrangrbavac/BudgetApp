@@ -26,6 +26,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint ="@string/date"
@@ -50,29 +51,35 @@
                 android:hint ="@string/amount"
                 android:drawableStart="@drawable/ic_money_24"
                 android:drawablePadding="16dp"
-                android:inputType="textEmailAddress|textNoSuggestions"/>
+                android:inputType="numberDecimal"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilCategory"
-            android:layout_width="match_parent"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivCategory"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:hintEnabled="true"
-            app:hintAnimationEnabled="true"
+            android:layout_marginTop="16dp"
+            android:paddingStart="2dp"
+            android:src="@drawable/ic_category_24"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilAmount">
+            app:layout_constraintTop_toBottomOf="@+id/tilAmount" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
+            <androidx.appcompat.widget.AppCompatSpinner
+                android:id="@+id/spCategories"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint ="@string/category"
-                android:drawableStart="@drawable/ic_category_24"
-                android:drawablePadding="16dp"
-                android:inputType="textEmailAddress|textNoSuggestions"/>
+                android:spinnerMode="dialog"
+                android:layout_marginStart="16dp"
+                android:prompt="@string/category"
+                items="@{viewModel.categoriesLiveData}"
+                onItemSelected="@{viewModel.onCategorySelected}"
+                app:layout_constraintTop_toTopOf="@+id/ivCategory"
+                app:layout_constraintBottom_toBottomOf="@+id/ivCategory"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/ivCategory">
 
-        </com.google.android.material.textfield.TextInputLayout>
+            </androidx.appcompat.widget.AppCompatSpinner>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilContents"
@@ -82,7 +89,7 @@
             app:hintAnimationEnabled="true"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tilCategory">
+            app:layout_constraintTop_toBottomOf="@+id/spCategories">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -90,7 +97,7 @@
                 android:hint ="@string/contents"
                 android:drawableStart="@drawable/ic_title_24"
                 android:drawablePadding="16dp"
-                android:inputType="textEmailAddress|textNoSuggestions"/>
+                android:inputType="textAutoComplete"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 

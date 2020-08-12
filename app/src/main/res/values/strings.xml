@@ -12,4 +12,16 @@
     <string name="contents">Contents</string>
     <string name="category">Category</string>
     <string name="save">Save</string>
+
+    <string-array name="categories">
+        <item>Social life</item>
+        <item>Food</item>
+        <item>Self development</item>
+        <item>Transportation</item>
+        <item>Health</item>
+        <item>Beauty</item>
+        <item>Education</item>
+        <item>Household</item>
+        <item>Other</item>
+    </string-array>
 </resources>
