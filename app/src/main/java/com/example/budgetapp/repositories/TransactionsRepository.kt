@@ -11,7 +11,6 @@ class TransactionsRepository(private val storage: TransactionsStorage){
     val transactions: MutableLiveData<List<DBTransaction>?> = MutableLiveData(storage.getTransactionsLiveData().value)
 
     suspend fun refreshTransactions(){
-        Log.d("Repository", storage.getTransactionsLiveData().value.toString())
         this.transactions.postValue(storage.getTransactionsAsync())
     }
 

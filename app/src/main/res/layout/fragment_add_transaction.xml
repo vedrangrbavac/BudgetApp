@@ -29,6 +29,7 @@
                 android:id="@+id/etDate"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="@={viewModel.dateLiveData}"
                 android:hint ="@string/date"
                 android:drawableStart="@drawable/ic_date_range_24"
                 android:drawablePadding="16dp"/>
@@ -46,9 +47,11 @@
             app:layout_constraintTop_toBottomOf="@+id/tilDate">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etAmount"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint ="@string/amount"
+                android:text="@={viewModel.amountLiveData}"
                 android:drawableStart="@drawable/ic_money_24"
                 android:drawablePadding="16dp"
                 android:inputType="numberDecimal"/>
@@ -92,9 +95,11 @@
             app:layout_constraintTop_toBottomOf="@+id/spCategories">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etContents"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint ="@string/contents"
+                android:text="@={viewModel.contentsLiveData}"
                 android:drawableStart="@drawable/ic_title_24"
                 android:drawablePadding="16dp"
                 android:inputType="textAutoComplete"/>
@@ -110,6 +115,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_margin="16dp"
             android:padding="8dp"
+            android:onClick="@{(v) -> viewModel.onClick(v)}"
             android:text="@string/save" />
 
 

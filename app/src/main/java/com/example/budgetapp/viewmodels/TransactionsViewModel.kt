@@ -1,8 +1,10 @@
 package com.example.budgetapp.viewmodels
 
+import android.os.Build
 import android.util.Log
 import android.view.View
 import android.widget.AdapterView
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,6 +13,10 @@ import com.example.budgetapp.R
 import com.example.budgetapp.common.base.BaseViewModel
 import com.example.budgetapp.data.models.persistance.DBTransaction
 import com.example.budgetapp.repositories.TransactionsRepository
+import kotlinx.android.synthetic.main.fragment_add_transaction.view.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class TransactionsViewModel(private val repository: TransactionsRepository) : BaseViewModel() {
 
@@ -22,6 +28,10 @@ class TransactionsViewModel(private val repository: TransactionsRepository) : Ba
             "Beauty", "Education", "Household", "Other"
         )
     )
+
+    val amountLiveData = MutableLiveData<String?>()
+    val contentsLiveData = MutableLiveData<String?>()
+    val dateLiveData = MutableLiveData<String?>()
 
     val selectedCategory = MutableLiveData("")
 
@@ -47,23 +57,30 @@ class TransactionsViewModel(private val repository: TransactionsRepository) : Ba
         ).forEach { it ->
             addSource(it) {
                 val filteredValue = transactionsLiveData.value
-                Log.d("FilteredValue", transactionsLiveData.value.toString())
                 value = filteredValue
             }
         }
     }
 
-    fun saveTransaction(dbTransaction: DBTransaction) {
+    private fun saveTransaction(dbTransaction: DBTransaction) {
         suspendCall {
             repository.saveTransaction(dbTransaction)
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     fun onClick(view: View) {
         when (view.id) {
             R.id.fabAddTransaction -> {
                 view.findNavController()
                     .navigate(R.id.action_transactionsFragment_to_addTransactionFragment)
+            }
+            R.id.btnSave -> {
+                val formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy", Locale.GERMAN)
+                val ld = LocalDate.parse(dateLiveData.value.toString(), formatter)
+                Log.d("Date", ld.toString())
+                //                Log.d("Data", contentsLiveData.value.toString() + LocalDate.now() + "/n" + selectedCategory.toString() + "/n" + amountLiveData.value!!.toDouble())
+                saveTransaction(DBTransaction(contentsLiveData.value.toString(), ld, selectedCategory.value.toString(), amountLiveData.value!!.toDouble()))
             }
 
         }

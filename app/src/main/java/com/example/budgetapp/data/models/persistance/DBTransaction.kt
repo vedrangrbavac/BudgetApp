@@ -2,6 +2,7 @@ package com.example.budgetapp.data.models.persistance
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.time.LocalDate
 import java.time.LocalDateTime
 
 
@@ -9,15 +10,15 @@ import java.time.LocalDateTime
 data class DBTransaction(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    val title: String,
-    val date: LocalDateTime,
+    val contents: String,
+    val date: LocalDate,
     val category: String,
     val totalPrice: Double
 ) {
     constructor(
-        title: String,
-        date: LocalDateTime,
+        contents: String,
+        date: LocalDate,
         category: String,
         totalPrice: Double
-    ) : this(0, title, date, category, totalPrice)
+    ) : this(0, contents, date, category, totalPrice)
 }

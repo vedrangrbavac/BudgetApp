@@ -12,7 +12,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.budgetapp.R
-import java.time.LocalDateTime
+import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
 
@@ -30,7 +30,6 @@ object BindingAdapters {
         }
         with(recyclerView.adapter as? ListAdapter<T, *>) {
             this?.run {
-                Log.d("data", data.toString())
                 submitList(data)
             }
         }
@@ -39,9 +38,9 @@ object BindingAdapters {
     @RequiresApi(Build.VERSION_CODES.O)
     @BindingAdapter("dateToText")
     @JvmStatic
-    fun dateTimeToString(textView: TextView, localDateTime: LocalDateTime?) {
+    fun dateTimeToString(textView: TextView, localDate: LocalDate?) {
         val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy")
-        textView.text = localDateTime?.format(formatter)
+        textView.text = localDate?.format(formatter)
     }
 
     @BindingAdapter("items", "onItemSelected", requireAll = true)

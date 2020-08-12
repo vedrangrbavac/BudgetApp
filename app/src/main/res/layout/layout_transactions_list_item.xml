@@ -38,7 +38,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="@{transaction.title}"
+                android:text="@{transaction.contents}"
                 tools:text="Groceries for house" />
 
             <androidx.appcompat.widget.AppCompatTextView
