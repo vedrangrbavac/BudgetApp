@@ -1,5 +1,6 @@
 package com.example.budgetapp.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +9,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.example.budgetapp.R
 import com.example.budgetapp.databinding.FragmentTransactionsBinding
 import com.example.budgetapp.ui.adapters.TransactionsRecyclerAdapter
@@ -34,6 +36,7 @@ class TransactionsFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -42,5 +45,11 @@ class TransactionsFragment : Fragment() {
 
         rvListOfTransactions.adapter = transactionsAdapter
         viewModel.refreshTransactions()
+
+        viewModel.transactionsLiveData.observe(viewLifecycleOwner, Observer { it ->
+            tvTotalSpend.text = it?.map {dbt ->
+                dbt.totalPrice
+            }?.sum().toString() + " kn"
+        })
     }
 }

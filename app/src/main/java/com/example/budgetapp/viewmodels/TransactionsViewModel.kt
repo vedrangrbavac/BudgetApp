@@ -21,6 +21,7 @@ class TransactionsViewModel(private val repository: TransactionsRepository) : Ba
 
     val transactionsLiveData: LiveData<List<DBTransaction>?> get() = repository.transactions
 
+
     val categoriesLiveData = MutableLiveData<List<String>>(
         listOf(
             "Social life", "Food", "Self development", "Transportation", "Health",

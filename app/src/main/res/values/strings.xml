@@ -12,6 +12,8 @@
     <string name="contents">Contents</string>
     <string name="category">Category</string>
     <string name="save">Save</string>
+    <string name="total_spend">Total spend:</string>
+    <string name="spend">Spend</string>
 
     <string-array name="categories">
         <item>Social life</item>
