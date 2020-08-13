@@ -1,5 +1,6 @@
 package com.example.budgetapp.util
 
+import android.annotation.SuppressLint
 import android.os.Build
 import android.util.Log
 import android.view.animation.AnimationUtils
@@ -12,6 +13,7 @@ import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.budgetapp.R
+import com.example.budgetapp.common.extensions.format
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 
@@ -41,6 +43,13 @@ object BindingAdapters {
     fun dateTimeToString(textView: TextView, localDate: LocalDate?) {
         val formatter = DateTimeFormatter.ofPattern("dd MMM yyyy")
         textView.text = localDate?.format(formatter)
+    }
+
+    @SuppressLint("SetTextI18n")
+    @BindingAdapter("doubleToText")
+    @JvmStatic
+    fun doubleToStringWithTwoDecimals(textView: TextView, value: Double?) {
+        textView.text = """${value?.format(2).toString()} kn"""
     }
 
     @BindingAdapter("items", "onItemSelected", requireAll = true)

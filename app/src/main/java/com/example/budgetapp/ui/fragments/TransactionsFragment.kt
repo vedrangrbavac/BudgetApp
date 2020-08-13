@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import com.example.budgetapp.R
+import com.example.budgetapp.common.extensions.format
 import com.example.budgetapp.databinding.FragmentTransactionsBinding
 import com.example.budgetapp.ui.adapters.TransactionsRecyclerAdapter
 import com.example.budgetapp.viewmodels.TransactionsViewModel
@@ -49,7 +50,7 @@ class TransactionsFragment : Fragment() {
         viewModel.transactionsLiveData.observe(viewLifecycleOwner, Observer { it ->
             tvTotalSpend.text = it?.map {dbt ->
                 dbt.totalPrice
-            }?.sum().toString() + " kn"
+            }?.sum()?.format(2).toString() + " kn"
         })
     }
 }

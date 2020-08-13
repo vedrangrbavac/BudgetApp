@@ -20,6 +20,7 @@
             android:orientation="horizontal"
             android:gravity="center_vertical"
             android:background="@color/design_default_color_primary"
+            android:padding="8dp"
             android:layout_marginTop="4dp"
             android:weightSum="4"
             app:layout_constraintTop_toTopOf="parent"
@@ -58,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:layout_weight="1"
-                android:text="@{String.valueOf(transaction.totalPrice) + ` kn`}"
+                app:doubleToText="@{transaction.totalPrice}"
                 tools:text="145,99 kn" />
 
         </LinearLayout>

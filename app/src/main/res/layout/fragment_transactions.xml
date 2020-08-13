@@ -40,6 +40,9 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvDate"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{(v) -> viewModel.onClick(v)}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -49,7 +52,10 @@
                 tools:text="12/04/2020" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvTitle"
+                android:id="@+id/tvContents"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{(v) -> viewModel.onClick(v)}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -59,6 +65,9 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvCategory"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{(v) -> viewModel.onClick(v)}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
@@ -67,6 +76,10 @@
                 android:text="@string/category" />
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvSpend"
+                android:clickable="true"
+                android:focusable="true"
+                android:onClick="@{(v) -> viewModel.onClick(v)}"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"

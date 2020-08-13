@@ -10,9 +10,25 @@ class TransactionsStorage(private val dao: TransactionsDao) {
         return dao.getTransactionsLiveData()
     }
 
-    fun getTransactionsAsync(): List<DBTransaction>{
+    suspend fun getTransactionsAsync(): List<DBTransaction>{
         return dao.getTransactionsAsync()
     }
+
+    suspend fun getTransactionsAsyncSortedByDate(): List<DBTransaction>{
+        return dao.getTransactionsAsyncSortedByDate()
+    }
+    suspend fun getTransactionsAsyncSortedByContents(): List<DBTransaction>{
+        return dao.getTransactionsAsyncSortedByContents()
+    }
+
+    suspend fun getTransactionsAsyncSortedByCategory(): List<DBTransaction>{
+        return dao.getTransactionsAsyncSortedByCategory()
+    }
+
+    suspend fun getTransactionsAsyncSortedBySpend(): List<DBTransaction>{
+        return dao.getTransactionsAsyncSortedBySpend()
+    }
+
 
     suspend fun save(model: DBTransaction) {
         dao.insertModel(model)

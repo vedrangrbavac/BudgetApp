@@ -90,6 +90,26 @@ class TransactionsViewModel(private val repository: TransactionsRepository) : Ba
                 view.findNavController()
                     .navigate(R.id.action_addTransactionFragment_to_transactionsFragment)
             }
+            R.id.tvDate ->{
+                suspendCall {
+                    repository.getTransactionsAsyncSortedByDate()
+                }
+            }
+            R.id.tvContents -> {
+                suspendCall {
+                    repository.getTransactionsAsyncSortedByContents()
+                }
+            }
+            R.id.tvCategory -> {
+                suspendCall {
+                    repository.getTransactionsAsyncSortedByCategory()
+                }
+            }
+            R.id.tvSpend -> {
+                suspendCall {
+                    repository.getTransactionsAsyncSortedBySpend()
+                }
+            }
 
         }
     }

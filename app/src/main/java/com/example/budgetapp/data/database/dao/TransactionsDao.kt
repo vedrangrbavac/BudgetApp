@@ -13,5 +13,18 @@ interface TransactionsDao: BaseDao<DBTransaction> {
     fun getTransactionsLiveData() : LiveData<List<DBTransaction>>
 
     @Query("Select * from DBTransaction")
-    fun getTransactionsAsync() : List<DBTransaction>
+    suspend fun getTransactionsAsync() : List<DBTransaction>
+
+    @Query("Select * from DBTransaction ORDER BY date")
+    suspend fun getTransactionsAsyncSortedByDate() : List<DBTransaction>
+
+    @Query("Select * from DBTransaction ORDER BY contents")
+    suspend fun getTransactionsAsyncSortedByContents() : List<DBTransaction>
+
+    @Query("Select * from DBTransaction ORDER BY category")
+    suspend fun getTransactionsAsyncSortedByCategory() : List<DBTransaction>
+
+    @Query("Select * from DBTransaction ORDER BY totalPrice")
+    suspend fun getTransactionsAsyncSortedBySpend() : List<DBTransaction>
+
 }

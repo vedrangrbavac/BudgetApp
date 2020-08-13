@@ -17,4 +17,24 @@ class TransactionsRepository(private val storage: TransactionsStorage){
     suspend fun saveTransaction(model: DBTransaction){
         storage.save(model)
     }
+
+    suspend fun getTransactionsAsyncSortedByDate(){
+        this.transactions.postValue(storage.getTransactionsAsyncSortedByDate())
+    }
+
+    suspend fun getTransactionsAsyncSortedByContents(){
+        this.transactions.postValue(storage.getTransactionsAsyncSortedByContents())
+    }
+
+    suspend fun getTransactionsAsyncSortedByCategory(){
+        this.transactions.postValue(storage.getTransactionsAsyncSortedByCategory())
+    }
+
+    suspend fun getTransactionsAsyncSortedBySpend(){
+        this.transactions.postValue(storage.getTransactionsAsyncSortedBySpend())
+    }
+
+
+
+
 }
