@@ -10,7 +10,6 @@ import androidx.fragment.app.Fragment
 import com.example.budgetapp.R
 import com.example.budgetapp.databinding.FragmentGraphBinding
 import com.example.budgetapp.viewmodels.TransactionsViewModel
-import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.PieData
 import com.github.mikephil.charting.data.PieDataSet
 import com.github.mikephil.charting.data.PieEntry
@@ -25,7 +24,7 @@ class GraphFragment : Fragment() {
 
     var pieData: PieData? = null
     var pieDataSet: PieDataSet? = null
-    private val pieEntries : MutableList<PieEntry> = arrayListOf()
+    private val pieEntries: MutableList<PieEntry> = arrayListOf()
 
     private val viewModel: TransactionsViewModel by inject()
 
@@ -42,7 +41,8 @@ class GraphFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        getEntries()
+        // getEntries()
+        getRealEntries()
         pieDataSet = PieDataSet(pieEntries, "")
         pieData = PieData(pieDataSet)
         pieChart.data = pieData
@@ -51,8 +51,8 @@ class GraphFragment : Fragment() {
         pieDataSet!!.valueTextColor = Color.WHITE
         pieDataSet!!.valueTextSize = 10f
         pieDataSet!!.sliceSpace = 5f
-        pieChart.setUsePercentValues(true)
-        pieChart.animateXY(3000,3000)
+        // pieChart.setUsePercentValues(true)
+        pieChart.animateXY(1500, 1500)
     }
 
 
@@ -63,5 +63,35 @@ class GraphFragment : Fragment() {
         pieEntries.add(PieEntry(8f, "Transportation"))
         pieEntries.add(PieEntry(7f, "Education"))
         pieEntries.add(PieEntry(3f, "Other"))
+    }
+
+    private fun getRealEntries() {
+        val transactions = viewModel.transactionsLiveData.value
+        var pieEntriesTemp = pieEntries.toMutableList()
+
+        transactions?.forEach { dbt ->
+            if (pieEntriesTemp.isEmpty()) {
+                pieEntries.add(PieEntry(dbt.totalPrice.toFloat(), dbt.category.trim()))
+            } else {
+                var categoryAlreadyExists = false
+                pieEntriesTemp.forEach { peTemp ->
+                    if (peTemp.label.trim() == dbt.category.trim())
+                        categoryAlreadyExists = true
+                }
+                if (!categoryAlreadyExists) {
+                    pieEntries.add(PieEntry(dbt.totalPrice.toFloat(), dbt.category.trim()))
+                } else {
+                    var newValue = dbt.totalPrice.toFloat()
+                    pieEntriesTemp.forEach { pe ->
+                        if (pe.label.trim() == dbt.category.trim()) {
+                            newValue += pe.value
+                            pieEntries.remove(pe)
+                            pieEntries.add(PieEntry(newValue, dbt.category.trim()))
+                        }
+                    }
+                }
+            }
+            pieEntriesTemp = pieEntries.toMutableList()
+        }
     }
 }
