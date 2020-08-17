@@ -28,7 +28,17 @@
         android:id="@+id/graphFragment"
         android:name="com.example.budgetapp.ui.fragments.GraphFragment"
         android:label="fragment_graph"
-        tools:layout="@layout/fragment_graph" />
+        tools:layout="@layout/fragment_graph" >
+        <action
+            android:id="@+id/action_graphFragment_to_statsByCategoryFragment"
+            app:destination="@id/statsByCategoryFragment" />
+        <action
+            android:id="@+id/action_graphFragment_to_allStatsFragment"
+            app:destination="@id/allStatsFragment" />
+        <action
+            android:id="@+id/action_graphFragment_to_statsByDateFragment"
+            app:destination="@id/statsByDateFragment" />
+    </fragment>
     <fragment
         android:id="@+id/addTransactionFragment"
         android:name="com.example.budgetapp.ui.fragments.AddTransactionFragment"
@@ -38,4 +48,19 @@
             android:id="@+id/action_addTransactionFragment_to_transactionsFragment"
             app:destination="@id/transactionsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/allStatsFragment"
+        android:name="com.example.budgetapp.ui.fragments.AllStatsFragment"
+        android:label="fragment_all_stats"
+        tools:layout="@layout/fragment_all_stats" />
+    <fragment
+        android:id="@+id/statsByDateFragment"
+        android:name="com.example.budgetapp.ui.fragments.StatsByDateFragment"
+        android:label="fragment_stats_by_date"
+        tools:layout="@layout/fragment_stats_by_date" />
+    <fragment
+        android:id="@+id/statsByCategoryFragment"
+        android:name="com.example.budgetapp.ui.fragments.StatsByCategoryFragment"
+        android:label="fragment_stats_by_category"
+        tools:layout="@layout/fragment_stats_by_category" />
 </navigation>

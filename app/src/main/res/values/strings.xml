@@ -14,6 +14,9 @@
     <string name="save">Save</string>
     <string name="total_spend">Total spend:</string>
     <string name="spend">Spend</string>
+    <string name="total_stats_by_category">Total stats by category</string>
+    <string name="stats_by_date">Stats by date</string>
+    <string name="stats_by_specific_category">Stats by specific category</string>
 
     <string-array name="categories">
         <item>Social life</item>
