@@ -16,13 +16,16 @@ import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
+import java.time.LocalDate
 
 class StatsViewModel(private val repository: TransactionsRepository) : BaseViewModel() {
 
     private val transactionsLiveData: LiveData<List<DBTransaction>?> get() = repository.transactions
 
-    var pieData: PieData? = null
-    var pieDataSet: PieDataSet? = null
+    val dateLiveData = MutableLiveData<String?>()
+
+    private var pieData: PieData? = null
+    private var pieDataSet: PieDataSet? = null
     private val pieEntries: MutableList<PieEntry> = arrayListOf()
 
     var lineEntries: MutableList<Entry> = arrayListOf()
@@ -63,7 +66,7 @@ class StatsViewModel(private val repository: TransactionsRepository) : BaseViewM
     fun initializeLineChart(lineChart: LineChart, selectedCategory: String) {
         val vl = LineDataSet(lineEntries, selectedCategory)
         vl.setDrawCircles(true)
-        vl.lineWidth= 4f
+        vl.lineWidth = 4f
         vl.circleRadius = 5f
         vl.color = Color.BLACK
         vl.valueTextSize = 18f
@@ -77,6 +80,39 @@ class StatsViewModel(private val repository: TransactionsRepository) : BaseViewM
         lineChart.description.text = "Order by date"
         lineChart.setNoDataText("No data yet!")
         lineChart.animateX(1800, Easing.EaseInExpo)
+    }
+
+    fun getStatsByDate(date: LocalDate) {
+
+        val transactions = transactionsLiveData.value
+        var pieEntriesTemp = pieEntries.toMutableList()
+
+        transactions?.forEach { dbt ->
+            if (dbt.date == date) {
+                if (pieEntriesTemp.isEmpty()) {
+                    pieEntries.add(PieEntry(dbt.totalPrice.toFloat(), dbt.category.trim()))
+                } else {
+                    var categoryAlreadyExists = false
+                    pieEntriesTemp.forEach { peTemp ->
+                        if (peTemp.label.trim() == dbt.category.trim())
+                            categoryAlreadyExists = true
+                    }
+                    if (!categoryAlreadyExists) {
+                        pieEntries.add(PieEntry(dbt.totalPrice.toFloat(), dbt.category.trim()))
+                    } else {
+                        var newValue = dbt.totalPrice.toFloat()
+                        pieEntriesTemp.forEach { pe ->
+                            if (pe.label.trim() == dbt.category.trim()) {
+                                newValue += pe.value
+                                pieEntries.remove(pe)
+                                pieEntries.add(PieEntry(newValue, dbt.category.trim()))
+                            }
+                        }
+                    }
+                }
+                pieEntriesTemp = pieEntries.toMutableList()
+            }
+        }
     }
 
     fun getAmountByCategory(selectedCategory: String) {
@@ -129,7 +165,8 @@ class StatsViewModel(private val repository: TransactionsRepository) : BaseViewM
                 view.findNavController().navigate(R.id.action_graphFragment_to_allStatsFragment)
             }
             R.id.btnStatsByDate -> {
-                view.findNavController().navigate(R.id.action_graphFragment_to_statsByDateFragment)
+                view.findNavController()
+                    .navigate(R.id.action_graphFragment_to_statsByDateFragment)
             }
             R.id.btnStatsBySpecificCategory -> {
                 view.findNavController()
