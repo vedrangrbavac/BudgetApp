@@ -35,5 +35,4 @@ class AllStatsFragment : Fragment() {
         viewModel.initializePieChart(pcAllStats)
 
     }
-
 }

@@ -68,21 +68,19 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilAmount" />
 
-            <androidx.appcompat.widget.AppCompatSpinner
-                android:id="@+id/spCategories"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:spinnerMode="dialog"
-                android:layout_marginStart="16dp"
-                android:prompt="@string/category"
-                items="@{viewModel.categoriesLiveData}"
-                onItemSelected="@{viewModel.onCategorySelected}"
-                app:layout_constraintTop_toTopOf="@+id/ivCategory"
-                app:layout_constraintBottom_toBottomOf="@+id/ivCategory"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/ivCategory">
-
-            </androidx.appcompat.widget.AppCompatSpinner>
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spCategories"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:spinnerMode="dialog"
+            android:layout_marginStart="16dp"
+            android:prompt="@string/category"
+            items="@{viewModel.categoriesLiveData}"
+            onItemSelected="@{viewModel.onCategorySelected}"
+            app:layout_constraintTop_toTopOf="@+id/ivCategory"
+            app:layout_constraintBottom_toBottomOf="@+id/ivCategory"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/ivCategory" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilContents"
