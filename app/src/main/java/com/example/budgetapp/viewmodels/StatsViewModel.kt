@@ -25,7 +25,7 @@ class StatsViewModel(private val repository: TransactionsRepository) : BaseViewM
     var pieDataSet: PieDataSet? = null
     private val pieEntries: MutableList<PieEntry> = arrayListOf()
 
-    private var lineEntries: MutableList<Entry> = arrayListOf()
+    var lineEntries: MutableList<Entry> = arrayListOf()
 
     val categoriesLiveData = MutableLiveData<List<String>>(
         listOf(

@@ -1,5 +1,6 @@
 package com.example.budgetapp.ui.fragments
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -30,15 +31,16 @@ class StatsByCategoryFragment : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
-        viewModel.selectedCategory.observe(viewLifecycleOwner, Observer {
-            Log.d("Observer", it)
+        viewModel.selectedCategory.observe(viewLifecycleOwner, Observer { it ->
             viewModel.getAmountByCategory(it)
             viewModel.initializeLineChart(lcStatsByCategory, it)
+            tvTotalSpendByCategory.text = "Total spend by " + it + ": " + viewModel.lineEntries.map { it.y }.sum().toString()
         })
 
 
