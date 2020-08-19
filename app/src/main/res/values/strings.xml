@@ -18,6 +18,9 @@
     <string name="stats_by_date">Stats by date</string>
     <string name="stats_by_specific_category">Stats by specific category</string>
     <string name="total_spend_by">Total spend by</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 
     <string-array name="categories">
         <item>Social life</item>
