@@ -22,6 +22,7 @@ val databaseModule = module {
     }
 
     single { get<AppDb>().transactionsDao }
+    single { get<AppDb>().userDao }
     /**
      * Adding data before on installation of app, can be useful when we want to test something, but
      * dont have any data to test.
