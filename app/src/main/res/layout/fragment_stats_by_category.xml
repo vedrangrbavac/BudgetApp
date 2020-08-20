@@ -15,18 +15,32 @@
         android:layout_height="match_parent"
         tools:context=".ui.fragments.StatsByCategoryFragment">
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_marginStart="@dimen/size16"
+            android:layout_margin="@dimen/size8"
+            android:textSize="@dimen/text_size_large"
+            style="@style/blueTitle"
+            android:id="@+id/tvSelectCategoryTitle"
+            android:text="@string/select_category"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/spCategories"
+            android:theme="@style/SpinnerTheme"
+            android:background="@drawable/background_button_blue"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:spinnerMode="dialog"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/size8"
             android:prompt="@string/category"
             items="@{viewModel.categoriesLiveData}"
             onItemSelected="@{viewModel.onCategorySelected}"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvSelectCategoryTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            app:layout_constraintStart_toStartOf="@+id/tvSelectCategoryTitle"/>
 
 
 

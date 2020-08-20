@@ -51,6 +51,7 @@ class StatsViewModel(private val repository: TransactionsRepository) : BaseViewM
 
 
     fun initializePieChart(pieChart: PieChart) {
+        Log.d("pieEntires", pieEntries.toString())
         pieDataSet = PieDataSet(pieEntries, "")
         pieData = PieData(pieDataSet)
         pieChart.data = pieData
@@ -66,9 +67,10 @@ class StatsViewModel(private val repository: TransactionsRepository) : BaseViewM
     fun initializeLineChart(lineChart: LineChart, selectedCategory: String) {
         val vl = LineDataSet(lineEntries, selectedCategory)
         vl.setDrawCircles(true)
-        vl.lineWidth = 4f
+        vl.lineWidth = 3f
         vl.circleRadius = 5f
-        vl.color = Color.BLACK
+        vl.color = Color.parseColor("#70009dd7")
+        vl.setCircleColor(Color.parseColor("#009dd7"))
         vl.valueTextSize = 18f
         lineChart.xAxis.labelRotationAngle = 0f
         lineChart.xAxis.isEnabled = false
@@ -79,7 +81,7 @@ class StatsViewModel(private val repository: TransactionsRepository) : BaseViewM
         lineChart.setDrawGridBackground(false)
         lineChart.description.text = "Order by date"
         lineChart.setNoDataText("No data yet!")
-        lineChart.animateX(1800, Easing.EaseInExpo)
+        lineChart.animateX(1500, Easing.EaseInExpo)
     }
 
     fun getStatsByDate(date: LocalDate) {

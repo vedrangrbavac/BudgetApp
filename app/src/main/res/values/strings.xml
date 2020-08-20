@@ -25,6 +25,8 @@
     <string name="register">Register</string>
     <string name="statistics">Statistics</string>
     <string name="add_transaction">Add transaction</string>
+    <string name="registration">Registration</string>
+    <string name="select_category">Select category:</string>
 
     <string-array name="categories">
         <item>Social life</item>

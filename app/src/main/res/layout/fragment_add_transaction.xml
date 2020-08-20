@@ -17,8 +17,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/InputTil"
             app:hintEnabled="true"
             app:hintAnimationEnabled="true"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,20 +26,18 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusable="false"
-                android:text="@={viewModel.dateLiveData}"
-                android:hint ="@string/date"
+                style="@style/InputEditText"
                 android:drawableStart="@drawable/ic_date_range_24"
-                android:drawablePadding="16dp"/>
+                android:drawablePadding="16dp"
+                android:focusable="false"
+                android:hint="@string/date"
+                android:text="@={viewModel.dateLiveData}" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilAmount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/InputTil"
             app:hintEnabled="true"
             app:hintAnimationEnabled="true"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,12 +46,11 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etAmount"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/InputEditText"
                 android:hint ="@string/amount"
                 android:text="@={viewModel.amountLiveData}"
                 android:drawableStart="@drawable/ic_money_24"
-                android:drawablePadding="16dp"
+                android:drawablePadding="@dimen/size16"
                 android:inputType="numberDecimal"/>
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -64,7 +60,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:paddingStart="2dp"
+            android:paddingStart="@dimen/size10"
             android:src="@drawable/ic_category_24"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tilAmount" />
@@ -74,6 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:spinnerMode="dialog"
+            android:theme="@style/SpinnerTheme"
             android:layout_marginStart="16dp"
             android:prompt="@string/category"
             items="@{viewModel.categoriesLiveData}"
@@ -85,8 +82,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilContents"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/InputTil"
             app:hintEnabled="true"
             app:hintAnimationEnabled="true"
             app:layout_constraintStart_toStartOf="parent"
@@ -95,25 +91,22 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etContents"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/InputEditText"
                 android:hint ="@string/contents"
                 android:text="@={viewModel.contentsLiveData}"
                 android:drawableStart="@drawable/ic_title_24"
-                android:drawablePadding="16dp"
+                android:drawablePadding="@dimen/size16"
                 android:inputType="textAutoComplete"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btnSave"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/blueButton"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_margin="16dp"
-            android:padding="8dp"
+            android:layout_margin="@dimen/size16"
             android:onClick="@{(v) -> viewModel.onClick(v)}"
             android:text="@string/save" />
 

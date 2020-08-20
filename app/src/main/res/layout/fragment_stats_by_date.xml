@@ -17,8 +17,7 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilDate"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            style="@style/InputTil"
             android:layout_margin="16dp"
             app:hintAnimationEnabled="true"
             app:hintEnabled="true"
@@ -28,8 +27,7 @@
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/etDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/InputEditText"
                 android:drawableStart="@drawable/ic_date_range_24"
                 android:drawablePadding="16dp"
                 android:focusable="false"
