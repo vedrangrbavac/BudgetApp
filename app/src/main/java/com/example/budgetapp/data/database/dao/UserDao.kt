@@ -20,4 +20,7 @@ interface UserDao: BaseDao<DBUser>{
     @Query("Select * from DBUser limit 1")
     suspend fun getUserAsync(): DBUser
 
+    @Query("DELETE FROM DBUser")
+    fun deleteAllFromUser()
+
 }

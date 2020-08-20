@@ -6,5 +6,5 @@ import org.koin.dsl.module
 
 val storageModule = module {
     single { TransactionsStorage(get()) }
-    single { AuthStorage(get(), get()) }
+    single { AuthStorage(get()) }
 }

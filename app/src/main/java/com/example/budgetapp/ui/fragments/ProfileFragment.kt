@@ -4,49 +4,31 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import com.example.budgetapp.R
-import com.google.android.material.snackbar.Snackbar
-import com.google.firebase.auth.FirebaseAuth
-import kotlinx.android.synthetic.main.fragment_profile.*
+import com.example.budgetapp.databinding.FragmentProfileBinding
+import com.example.budgetapp.viewmodels.AuthViewModel
+import org.koin.android.ext.android.inject
 
 class ProfileFragment : Fragment() {
 
-    var fbAuth = FirebaseAuth.getInstance()
+    private lateinit var binding: FragmentProfileBinding
+    private val viewModel: AuthViewModel by inject()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-
-
-        btnLogout.setOnClickListener{ view ->
-            showMessage(view, "Logging Out...")
-            signOut()
-        }
-
-        fbAuth.addAuthStateListener {
-            if(fbAuth.currentUser == null){
-
-            }
-        }
-    }
-
-    fun signOut(){
-        fbAuth.signOut()
-
-    }
-
-    fun showMessage(view: View, message: String){
-        Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE).setAction("Action", null).show()
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
     }
 
 }

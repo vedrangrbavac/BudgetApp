@@ -23,7 +23,11 @@
         android:id="@+id/profileFragment"
         android:name="com.example.budgetapp.ui.fragments.ProfileFragment"
         android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profileFragment_to_authActivity"
+            app:destination="@id/authActivity" />
+    </fragment>
     <fragment
         android:id="@+id/graphFragment"
         android:name="com.example.budgetapp.ui.fragments.GraphFragment"
@@ -63,4 +67,8 @@
         android:name="com.example.budgetapp.ui.fragments.StatsByCategoryFragment"
         android:label="fragment_stats_by_category"
         tools:layout="@layout/fragment_stats_by_category" />
+    <activity
+        android:id="@+id/authActivity"
+        android:name="com.example.budgetapp.ui.activites.AuthActivity"
+        android:label="AuthActivity" />
 </navigation>
