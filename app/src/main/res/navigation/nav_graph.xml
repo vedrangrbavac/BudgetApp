@@ -8,22 +8,17 @@
     <fragment
         android:id="@+id/transactionsFragment"
         android:name="com.example.budgetapp.ui.fragments.TransactionsFragment"
-        android:label="fragment_transactions"
-        tools:layout="@layout/fragment_transactions" >
+        android:label="@string/transactions"
+        tools:layout="@layout/fragment_transactions">
         <action
             android:id="@+id/action_transactionsFragment_to_addTransactionFragment"
             app:destination="@id/addTransactionFragment" />
     </fragment>
     <fragment
-        android:id="@+id/calendarFragment"
-        android:name="com.example.budgetapp.ui.fragments.CalendarFragment"
-        android:label="fragment_calendar"
-        tools:layout="@layout/fragment_calendar" />
-    <fragment
         android:id="@+id/profileFragment"
         android:name="com.example.budgetapp.ui.fragments.ProfileFragment"
-        android:label="fragment_profile"
-        tools:layout="@layout/fragment_profile" >
+        android:label="@string/profile"
+        tools:layout="@layout/fragment_profile">
         <action
             android:id="@+id/action_profileFragment_to_authActivity"
             app:destination="@id/authActivity" />
@@ -31,8 +26,8 @@
     <fragment
         android:id="@+id/graphFragment"
         android:name="com.example.budgetapp.ui.fragments.GraphFragment"
-        android:label="fragment_graph"
-        tools:layout="@layout/fragment_graph" >
+        android:label="@string/statistics"
+        tools:layout="@layout/fragment_graph">
         <action
             android:id="@+id/action_graphFragment_to_statsByCategoryFragment"
             app:destination="@id/statsByCategoryFragment" />
@@ -46,8 +41,8 @@
     <fragment
         android:id="@+id/addTransactionFragment"
         android:name="com.example.budgetapp.ui.fragments.AddTransactionFragment"
-        android:label="fragment_add_transaction"
-        tools:layout="@layout/fragment_add_transaction" >
+        android:label="@string/add_transaction"
+        tools:layout="@layout/fragment_add_transaction">
         <action
             android:id="@+id/action_addTransactionFragment_to_transactionsFragment"
             app:destination="@id/transactionsFragment" />
@@ -55,17 +50,17 @@
     <fragment
         android:id="@+id/allStatsFragment"
         android:name="com.example.budgetapp.ui.fragments.AllStatsFragment"
-        android:label="fragment_all_stats"
+        android:label="@string/total_stats_by_category"
         tools:layout="@layout/fragment_all_stats" />
     <fragment
         android:id="@+id/statsByDateFragment"
         android:name="com.example.budgetapp.ui.fragments.StatsByDateFragment"
-        android:label="fragment_stats_by_date"
+        android:label="@string/stats_by_date"
         tools:layout="@layout/fragment_stats_by_date" />
     <fragment
         android:id="@+id/statsByCategoryFragment"
         android:name="com.example.budgetapp.ui.fragments.StatsByCategoryFragment"
-        android:label="fragment_stats_by_category"
+        android:label="@string/stats_by_specific_category"
         tools:layout="@layout/fragment_stats_by_category" />
     <activity
         android:id="@+id/authActivity"

@@ -22,7 +22,6 @@ class AuthViewModel(private val repository: AuthRepository) : BaseViewModel() {
         }
     }
 
-
     fun decideStartingScreen(view: View) {
         suspendCall {
             delay(1000)
@@ -49,7 +48,9 @@ class AuthViewModel(private val repository: AuthRepository) : BaseViewModel() {
                 fbAuth.signOut()
                 view.findNavController().navigate(R.id.action_profileFragment_to_authActivity)
             }
-
+            R.id.tvRegister -> {
+                view.findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+            }
         }
     }
 

@@ -47,7 +47,6 @@ class MainActivity : AppCompatActivity() {
     private fun setupDestinationListener() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.profileFragment ||
-                destination.id == R.id.calendarFragment ||
                 destination.id == R.id.graphFragment ||
                 destination.id == R.id.transactionsFragment
             ) {
