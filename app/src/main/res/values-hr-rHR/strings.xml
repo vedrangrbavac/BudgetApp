@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">BudgetApp</string>
+    <string name="graph">Graf</string>
+    <string name="profile">Profil</string>
+    <string name="transactions">Transakcije</string>
+    <string name="title">Naslov</string>
+    <string name="date">Datum</string>
+    <string name="amount">Količina</string>
+    <string name="contents">Stvari</string>
+    <string name="category">Kategorija</string>
+    <string name="save">Spremi</string>
+    <string name="total_spend">Ukuono potrošeno:</string>
+    <string name="spend">Potrošeno</string>
+    <string name="total_stats_by_category">Ukupna statistika po kategoriji</string>
+    <string name="stats_by_date">Statistika po datumu</string>
+    <string name="stats_by_specific_category">Statistika po specifičnoj kategoriji</string>
+    <string name="total_spend_by">Ukupno potrošeno po</string>
+    <string name="password">Lozinka</string>
+    <string name="login">Prijava</string>
+    <string name="log_out">Odjava</string>
+    <string name="don_t_have_account_yet">Još uvijek nemate račun?</string>
+    <string name="register">Registriraj se</string>
+    <string name="statistics">Statistika</string>
+    <string name="add_transaction">Dodaj transakciju</string>
+    <string name="registration">Registracija</string>
+    <string name="select_category">"Odaberi kategoriju: "</string>
+</resources>

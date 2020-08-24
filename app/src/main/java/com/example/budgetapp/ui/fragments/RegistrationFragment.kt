@@ -1,22 +1,18 @@
 package com.example.budgetapp.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.budgetapp.R
 import com.example.budgetapp.common.extensions.snackbar
 import com.example.budgetapp.data.models.persistance.DBUser
-import com.example.budgetapp.ui.activites.MainActivity
 import com.example.budgetapp.viewmodels.AuthViewModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_registration.*
-import kotlinx.coroutines.delay
 import org.koin.android.ext.android.inject
 
 class RegistrationFragment : Fragment() {
@@ -48,7 +44,8 @@ class RegistrationFragment : Fragment() {
             .addOnCompleteListener(requireActivity(), OnCompleteListener { task ->
                 if (task.isSuccessful) {
                     viewModel.saveUser(DBUser(email))
-                    view.findNavController().navigate(R.id.action_registrationFragment_to_mainActivity)
+                    view.findNavController()
+                        .navigate(R.id.action_registrationFragment_to_mainActivity)
                 } else {
                     snackbar("Error: ${task.exception?.message}")
                 }
