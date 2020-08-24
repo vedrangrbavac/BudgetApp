@@ -14,6 +14,7 @@ import com.example.budgetapp.repositories.TransactionsRepository
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.charts.PieChart
+import com.github.mikephil.charting.components.Description
 import com.github.mikephil.charting.data.*
 import com.github.mikephil.charting.utils.ColorTemplate
 import java.time.LocalDate
@@ -54,6 +55,8 @@ class StatsViewModel(private val repository: TransactionsRepository) : BaseViewM
         Log.d("pieEntires", pieEntries.toString())
         pieDataSet = PieDataSet(pieEntries, "")
         pieData = PieData(pieDataSet)
+        pieChart.legend.isEnabled = false
+        pieChart.description.isEnabled = false
         pieChart.data = pieData
         pieDataSet!!.setColors(*ColorTemplate.JOYFUL_COLORS)
         pieDataSet!!.sliceSpace = 2f

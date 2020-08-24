@@ -42,7 +42,5 @@ class StatsByCategoryFragment : Fragment() {
             viewModel.initializeLineChart(lcStatsByCategory, it)
             tvTotalSpendByCategory.text = "Total spend by " + it + ": " + viewModel.lineEntries.map { it.y }.sum().toString()
         })
-
-
     }
 }
