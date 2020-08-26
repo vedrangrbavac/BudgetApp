@@ -6,12 +6,12 @@ import com.example.budgetapp.R
 import com.example.budgetapp.common.base.BaseViewModel
 import com.example.budgetapp.data.models.persistance.DBUser
 import com.example.budgetapp.repositories.AuthRepository
-import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
+import java.util.regex.Pattern
 
 class AuthViewModel(private val repository: AuthRepository) : BaseViewModel() {
 
-    var fbAuth = FirebaseAuth.getInstance()
+
     val isUserLoggedIn: Boolean get() = repository.isUserLoggedIn()
 
     val user = repository.user
@@ -45,13 +45,19 @@ class AuthViewModel(private val repository: AuthRepository) : BaseViewModel() {
         when (view.id) {
             R.id.btnLogout -> {
                 repository.logout()
-                fbAuth.signOut()
                 view.findNavController().navigate(R.id.action_profileFragment_to_authActivity)
             }
             R.id.tvRegister -> {
                 view.findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
             }
         }
+    }
+
+    fun isValidEmail(email: String): Boolean {
+        val pattern = Pattern.compile(
+            "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        )
+        return pattern.matcher(email).matches()
     }
 
 }

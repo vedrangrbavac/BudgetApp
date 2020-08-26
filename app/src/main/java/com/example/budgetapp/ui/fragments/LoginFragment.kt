@@ -1,6 +1,5 @@
 package com.example.budgetapp.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +11,6 @@ import com.example.budgetapp.R
 import com.example.budgetapp.common.extensions.snackbar
 import com.example.budgetapp.data.models.persistance.DBUser
 import com.example.budgetapp.databinding.FragmentLoginBinding
-import com.example.budgetapp.ui.activites.MainActivity
 import com.example.budgetapp.viewmodels.AuthViewModel
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult

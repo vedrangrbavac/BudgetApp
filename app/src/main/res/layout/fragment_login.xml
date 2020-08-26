@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.example.budgetapp.viewmodels.AuthViewModel" />
@@ -15,30 +16,30 @@
         tools:context=".ui.fragments.LoginFragment">
 
         <androidx.appcompat.widget.AppCompatTextView
+            style="@style/blueTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/blueTitle"
-            android:text="@string/login"
             android:layout_margin="@dimen/size16"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:text="@string/login"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/tilEmail"
             style="@style/InputTil"
             android:layout_margin="@dimen/size16"
-            app:hintEnabled="true"
             app:hintAnimationEnabled="true"
-            app:layout_constraintStart_toStartOf="parent"
+            app:hintEnabled="true"
             app:layout_constraintBottom_toTopOf="@id/tilPassword"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                style="@style/InputEditText"
                 android:id="@+id/etEmail"
-                android:hint="@string/email"
+                style="@style/InputEditText"
                 android:drawableStart="@drawable/ic_email_24"
                 android:drawablePadding="@dimen/size16"
+                android:hint="@string/email"
                 android:inputType="textEmailAddress|textNoSuggestions" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -47,40 +48,41 @@
             android:id="@+id/tilPassword"
             style="@style/InputTil"
             android:layout_margin="@dimen/size16"
-            app:hintEnabled="true"
             app:hintAnimationEnabled="true"
-            app:passwordToggleEnabled="true"
-            app:layout_constraintStart_toStartOf="parent"
+            app:hintEnabled="true"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent">
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
-                style="@style/InputEditText"
                 android:id="@+id/etPassword"
-                android:hint="@string/password"
+                style="@style/InputEditText"
                 android:drawableStart="@drawable/ic_lock_24"
                 android:drawablePadding="@dimen/size16"
+                android:hint="@string/password"
                 android:inputType="textPassword" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
+            android:id="@+id/tvRegister"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvRegister"
+            android:onClick="@{(v) -> viewModel.onClick(v)}"
             android:text="@string/don_t_have_account_yet"
             android:textColor="@android:color/holo_blue_dark"
-            android:onClick="@{(v) -> viewModel.onClick(v)}"
-            app:layout_constraintTop_toBottomOf="@id/tilPassword"
-            app:layout_constraintStart_toStartOf="@id/tilPassword"/>
+            app:layout_constraintStart_toStartOf="@id/tilPassword"
+            app:layout_constraintTop_toBottomOf="@id/tilPassword" />
 
         <androidx.appcompat.widget.AppCompatButton
-            style="@style/blueButton"
             android:id="@+id/btnLogin"
-            android:text="@string/login"
+            style="@style/blueButton"
             android:layout_margin="@dimen/size16"
+            android:text="@string/login"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
